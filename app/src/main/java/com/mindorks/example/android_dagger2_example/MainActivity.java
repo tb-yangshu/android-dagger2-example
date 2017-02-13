@@ -1,11 +1,11 @@
 package com.mindorks.example.android_dagger2_example;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.mindorks.example.android_dagger2_example.data.ActivityData;
 import com.mindorks.example.android_dagger2_example.data.DataManager;
 import com.mindorks.example.android_dagger2_example.data.model.User;
 import com.mindorks.example.android_dagger2_example.di.component.ActivityComponent;
@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
     DataManager mDataManager;
+
+    @Inject
+    ActivityData mActivityData;
 
     private ActivityComponent activityComponent;
 
