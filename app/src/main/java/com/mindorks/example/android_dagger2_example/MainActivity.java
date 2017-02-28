@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.mindorks.example.android_dagger2_example.data.ActivityData;
+import com.mindorks.example.android_dagger2_example.data.ActivityDataWithScope;
 import com.mindorks.example.android_dagger2_example.data.DataManager;
 import com.mindorks.example.android_dagger2_example.data.model.User;
 import com.mindorks.example.android_dagger2_example.di.component.ActivityComponent;
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
     ActivityData mActivityData;
+
+    @Inject
+    ActivityDataWithScope mActivityDataWithScope;
 
     private ActivityComponent activityComponent;
 
