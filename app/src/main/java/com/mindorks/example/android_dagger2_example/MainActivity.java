@@ -2,7 +2,6 @@ package com.mindorks.example.android_dagger2_example;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.mindorks.example.android_dagger2_example.data.ActivityData;
@@ -10,12 +9,10 @@ import com.mindorks.example.android_dagger2_example.data.ActivityDataWithScope;
 import com.mindorks.example.android_dagger2_example.data.AppData;
 import com.mindorks.example.android_dagger2_example.data.DataManager;
 import com.mindorks.example.android_dagger2_example.data.model.User;
-import com.mindorks.example.android_dagger2_example.di.component.ActivityComponent;
-import com.mindorks.example.android_dagger2_example.di.component.DaggerActivityComponent;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Inject
     DataManager mDataManager;
@@ -29,19 +26,8 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     AppData appData;
 
-    private ActivityComponent activityComponent;
-
     private TextView mTvUserInfo;
     private TextView mTvAccessToken;
-
-    public ActivityComponent getActivityComponent() {
-        if (activityComponent == null) {
-            activityComponent = DaggerActivityComponent.builder()
-                    .applicationComponent(DemoApplication.get(this).getComponent())
-                    .build();
-        }
-        return activityComponent;
-    }
 
 
     @Override
@@ -63,21 +49,25 @@ public class MainActivity extends AppCompatActivity {
         mDataManager.saveAccessToken("ASDR12443JFDJF43543J543H3K543");
 
         String token = mDataManager.getAccessToken();
-        if(token != null){
+        if (token != null) {
             mTvAccessToken.setText(token);
         }
     }
 
-    private void createUser(){
+    private void createUser() {
         try {
             mDataManager.createUser(new User("Ali", "1367, Gurgaon, Haryana, India"));
-        }catch (Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private void getUser(){
+    private void getUser() {
         try {
             User user = mDataManager.getUser(1L);
             mTvUserInfo.setText(user.toString());
-        }catch (Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
