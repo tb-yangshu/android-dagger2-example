@@ -3,6 +3,7 @@ package com.mindorks.example.android_dagger2_example;
 import android.app.Application;
 import android.content.Context;
 
+import com.mindorks.example.android_dagger2_example.data.AppData;
 import com.mindorks.example.android_dagger2_example.data.DataManager;
 import com.mindorks.example.android_dagger2_example.di.component.ApplicationComponent;
 import com.mindorks.example.android_dagger2_example.di.component.DaggerApplicationComponent;
@@ -20,6 +21,9 @@ public class DemoApplication extends Application {
 
     @Inject
     DataManager dataManager;
+
+    @Inject
+    AppData appData;
 
     public static DemoApplication get(Context context) {
         return (DemoApplication) context.getApplicationContext();

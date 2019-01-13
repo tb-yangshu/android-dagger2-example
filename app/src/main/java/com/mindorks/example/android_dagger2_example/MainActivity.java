@@ -7,11 +7,11 @@ import android.widget.TextView;
 
 import com.mindorks.example.android_dagger2_example.data.ActivityData;
 import com.mindorks.example.android_dagger2_example.data.ActivityDataWithScope;
+import com.mindorks.example.android_dagger2_example.data.AppData;
 import com.mindorks.example.android_dagger2_example.data.DataManager;
 import com.mindorks.example.android_dagger2_example.data.model.User;
 import com.mindorks.example.android_dagger2_example.di.component.ActivityComponent;
 import com.mindorks.example.android_dagger2_example.di.component.DaggerActivityComponent;
-import com.mindorks.example.android_dagger2_example.di.module.ActivityModule;
 
 import javax.inject.Inject;
 
@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     ActivityDataWithScope mActivityDataWithScope;
 
+    @Inject
+    AppData appData;
+
     private ActivityComponent activityComponent;
 
     private TextView mTvUserInfo;
@@ -34,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     public ActivityComponent getActivityComponent() {
         if (activityComponent == null) {
             activityComponent = DaggerActivityComponent.builder()
-                    .activityModule(new ActivityModule(this))
                     .applicationComponent(DemoApplication.get(this).getComponent())
                     .build();
         }

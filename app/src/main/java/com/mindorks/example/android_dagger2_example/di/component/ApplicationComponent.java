@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.mindorks.example.android_dagger2_example.DemoApplication;
+import com.mindorks.example.android_dagger2_example.data.AppData;
 import com.mindorks.example.android_dagger2_example.data.DataManager;
 import com.mindorks.example.android_dagger2_example.data.DbHelper;
 import com.mindorks.example.android_dagger2_example.data.SharedPrefsHelper;
@@ -31,6 +32,8 @@ public interface ApplicationComponent {
     Application getApplication();
 
     DataManager getDataManager();
+
+    AppData getAppData();
 
     SharedPrefsHelper getPreferenceHelper();
 
